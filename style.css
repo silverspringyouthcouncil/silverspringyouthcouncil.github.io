@@ -22,6 +22,8 @@ nav{display:flex;align-items:center;justify-content:space-between;min-height:96p
 .mv h2,.aims h2{font-size:2rem;font-weight:600;margin-bottom:20px}
 .mv .text p{max-width:430px}
 .photo{background:linear-gradient(135deg,var(--band),var(--steel));display:grid;place-items:center;color:rgba(255,255,255,.85);font-size:.95rem;letter-spacing:.05em;border-left:1px solid var(--ink);border-right:1px solid var(--ink)}
+.photo{overflow:hidden;position:relative}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .mv>div:nth-child(1){border-bottom:1px solid var(--ink)}
 .mv>div:nth-child(2){border-bottom:1px solid var(--ink)}
 .aims{background:var(--pale);padding:72px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
