@@ -4,240 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Silver Spring Youth Council</title>
-<meta name="description" content="The Silver Spring Youth Council gives young people in Silver Spring, MD a real voice in their community.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#14201b; --paper:#f6f3ec; --green:#1f5b45; --green-dark:#143d2e;
-    --sun:#f2b234; --coral:#e2603f; --muted:#5b665f; --line:#ddd6c8;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
-  h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;line-height:1.05;letter-spacing:-.02em}
-  a{color:inherit}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-
-  /* Nav */
-  header{position:sticky;top:0;z-index:10;background:rgba(246,243,236,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .logo{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.15rem;text-decoration:none}
-  .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--green);color:var(--sun);display:grid;place-items:center;font-size:.85rem}
-  .links{display:flex;gap:28px;list-style:none}
-  .links a{text-decoration:none;font-weight:500;font-size:.95rem}
-  .links a:hover{color:var(--green)}
-  .menu-btn{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer}
-
-  .btn{display:inline-block;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .15s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn-primary{background:var(--coral);color:#fff}
-  .btn-ghost{border:2px solid var(--ink)}
-
-  /* Hero */
-  .hero{padding:96px 0 80px}
-  .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:center}
-  .eyebrow{display:inline-block;background:var(--sun);padding:6px 14px;border-radius:999px;font-weight:600;font-size:.85rem;margin-bottom:22px}
-  .hero h1{font-size:clamp(2.8rem,7vw,5.2rem);margin-bottom:22px}
-  .hero h1 em{font-style:normal;color:var(--green)}
-  .hero p{font-size:1.2rem;color:var(--muted);max-width:520px;margin-bottom:32px}
-  .cta{display:flex;gap:14px;flex-wrap:wrap}
-  .hero-card{background:var(--green);color:var(--paper);border-radius:28px;padding:36px;position:relative;overflow:hidden}
-  .hero-card::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:var(--sun);right:-70px;bottom:-70px;opacity:.9}
-  .stat{position:relative;z-index:1;margin-bottom:22px}
-  .stat b{display:block;font-family:"Bricolage Grotesque";font-size:2.6rem;color:var(--sun)}
-  .stat span{opacity:.85}
-
-  section{padding:88px 0}
-  .section-head{max-width:640px;margin-bottom:48px}
-  .section-head h2{font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:14px}
-  .section-head p{color:var(--muted);font-size:1.1rem}
-
-  /* About */
-  #about{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .pillar{padding:30px;border-radius:20px;border:1px solid var(--line)}
-  .pillar .icon{font-size:1.8rem;margin-bottom:14px}
-  .pillar h3{font-size:1.4rem;margin-bottom:8px}
-  .pillar p{color:var(--muted)}
-
-  /* Events */
-  .events{display:grid;gap:16px}
-  .event{display:grid;grid-template-columns:96px 1fr auto;gap:24px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 26px}
-  .date{text-align:center;background:var(--paper);border-radius:12px;padding:10px 0}
-  .date b{display:block;font-family:"Bricolage Grotesque";font-size:1.9rem;line-height:1}
-  .date span{font-size:.8rem;font-weight:600;text-transform:uppercase;color:var(--coral)}
-  .event h3{font-size:1.25rem;margin-bottom:4px}
-  .event p{color:var(--muted);font-size:.95rem}
-  .tag{font-size:.8rem;font-weight:600;padding:6px 12px;border-radius:999px;background:#e3eee8;color:var(--green)}
-
-  /* Team */
-  #team{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .team{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-  .member{text-align:center}
-  .avatar{aspect-ratio:1;border-radius:24px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:var(--sun);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-size:2.4rem;font-weight:800;margin-bottom:14px}
-  .member h3{font-size:1.15rem}
-  .member p{color:var(--muted);font-size:.9rem}
-
-  /* Join */
-  .join{background:var(--coral);color:#fff;border-radius:32px;padding:64px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
-  .join h2{font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:14px}
-  .join ul{list-style:none;display:grid;gap:12px}
-  .join li{background:rgba(255,255,255,.15);padding:14px 18px;border-radius:14px;font-weight:500}
-  .join .btn{background:var(--ink);color:#fff;margin-top:24px}
-
-  /* Footer */
-  footer{background:var(--green-dark);color:var(--paper);padding:64px 0 32px;margin-top:88px}
-  .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
-  footer h3{font-size:1.1rem;margin-bottom:12px;color:var(--sun)}
-  footer p, footer a{opacity:.85;font-size:.95rem;text-decoration:none;display:block;margin-bottom:6px}
-  footer a:hover{opacity:1;text-decoration:underline}
-  .copy{border-top:1px solid rgba(255,255,255,.15);padding-top:24px;font-size:.85rem;opacity:.7}
-
-  @media (max-width:860px){
-    .hero-grid,.join,.foot{grid-template-columns:1fr}
-    .pillars{grid-template-columns:1fr}
-    .team{grid-template-columns:repeat(2,1fr)}
-    .event{grid-template-columns:76px 1fr}
-    .event .tag{display:none}
-    .join{padding:40px 28px}
-    .menu-btn{display:block}
-    .links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:20px 24px;gap:16px;border-bottom:1px solid var(--line)}
-    .links.open{display:flex}
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
   <nav class="wrap">
-    <a href="#" class="logo"><span class="logo-mark">SSYC</span>Silver Spring Youth Council</a>
-    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+    <a href="index.html" class="logo">SSYC</a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">&#9776;</button>
     <ul class="links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#events">Events</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#join">Join</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="meetings.html">Meetings</a></li>
+      <li><a href="join.html">Join</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </nav>
 </header>
 
-<main>
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow">Silver Spring, Maryland</span>
-        <h1>Young people,<br><em>real say</em> in our city.</h1>
-        <p>We're students from across Silver Spring working to make our community better — through service, advocacy, and making sure youth voices are heard where decisions get made.</p>
-        <div class="cta">
-          <a href="#join" class="btn btn-primary">Join the council</a>
-          <a href="#events" class="btn btn-ghost">Upcoming events</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="stat"><b>[00]</b><span>student members</span></div>
-        <div class="stat"><b>[00]</b><span>schools represented</span></div>
-        <div class="stat"><b>[000]</b><span>service hours this year</span></div>
-      </div>
-    </div>
-  </section>
+<section class="band">
+  <h1>Silver Spring Youth Council</h1>
+  <p>Young people working together to shape the community we live in.</p>
+</section>
 
-  <section id="about">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>What we do</h2>
-        <p>[Your mission statement goes here — one or two sentences on why the council exists and who it's for.]</p>
-      </div>
-      <div class="pillars">
-        <div class="pillar"><div class="icon">📣</div><h3>Advocate</h3><p>We bring youth perspectives to local leaders on issues like transit, safety, schools, and mental health.</p></div>
-        <div class="pillar"><div class="icon">🤝</div><h3>Serve</h3><p>Community cleanups, food drives, and volunteer projects that count toward SSL hours.</p></div>
-        <div class="pillar"><div class="icon">🌱</div><h3>Lead</h3><p>Members build real leadership skills — running meetings, planning events, and speaking up.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="events">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Upcoming events</h2>
-        <p>Everyone's welcome. Bring a friend.</p>
-      </div>
-      <div class="events">
-        <div class="event">
-          <div class="date"><span>Dec</span><b>06</b></div>
-          <div><h3>[Event name]</h3><p>[Location] · [Time]</p></div>
-          <span class="tag">Service</span>
-        </div>
-        <div class="event">
-          <div class="date"><span>Dec</span><b>13</b></div>
-          <div><h3>[General meeting]</h3><p>[Location] · [Time]</p></div>
-          <span class="tag">Meeting</span>
-        </div>
-        <div class="event">
-          <div class="date"><span>Jan</span><b>10</b></div>
-          <div><h3>[Event name]</h3><p>[Location] · [Time]</p></div>
-          <span class="tag">Community</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="team">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Meet the board</h2>
-        <p>Run by students, for students.</p>
-      </div>
-      <div class="team">
-        <div class="member"><div class="avatar">A</div><h3>[Name]</h3><p>President · [School]</p></div>
-        <div class="member"><div class="avatar">B</div><h3>[Name]</h3><p>Vice President · [School]</p></div>
-        <div class="member"><div class="avatar">C</div><h3>[Name]</h3><p>Secretary · [School]</p></div>
-        <div class="member"><div class="avatar">D</div><h3>[Name]</h3><p>Outreach · [School]</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="join">
-    <div class="wrap">
-      <div class="join">
-        <div>
-          <h2>Want in?</h2>
-          <p>If you live or go to school in Silver Spring and you're in [grades 9–12], there's a seat for you.</p>
-          <a href="[LINK TO GOOGLE FORM]" class="btn">Apply now →</a>
-        </div>
-        <ul>
-          <li>✓ Earn SSL service hours</li>
-          <li>✓ Meet students from other schools</li>
-          <li>✓ Talk directly with local officials</li>
-          <li>✓ Great for college applications</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer id="contact">
+<section class="intro">
   <div class="wrap">
-    <div class="foot">
-      <div>
-        <h3>Silver Spring Youth Council</h3>
-        <p>[Short line about the council, or your meeting place and schedule.]</p>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <a href="mailto:[email]">[email@example.com]</a>
-      </div>
-      <div>
-        <h3>Follow</h3>
-        <a href="[instagram link]">Instagram</a>
-        <a href="[tiktok link]">TikTok</a>
-      </div>
-    </div>
-    <div class="copy">© 2026 Silver Spring Youth Council</div>
+    <p>The Silver Spring Youth Council is a group of students from across Silver Spring, Maryland. We give young people a place to speak up, work on real community projects, and bring youth perspectives to the people who make local decisions.</p>
   </div>
-</footer>
+</section>
 
+<div class="wrap">
+  <div class="mv">
+    <div class="photo">[Photo]</div>
+    <div class="text"><h2>Mission</h2><p>[Your mission statement. Example: To empower Silver Spring youth to lead, serve, and advocate for a stronger, more inclusive community.]</p></div>
+    <div class="text"><h2>Vision</h2><p>[Your vision. Example: A Silver Spring where every young person is heard.]</p></div>
+    <div class="photo">[Photo]</div>
+  </div>
+</div>
+
+<section class="aims">
+  <div class="wrap">
+    <h2>Aims</h2>
+    <div class="aim-grid">
+      <div class="aim"><h3>Aim 1</h3><p>Give every young person in Silver Spring a real voice in decisions that affect them.</p></div>
+      <div class="aim"><h3>Aim 2</h3><p>Bring students from different schools and neighborhoods together.</p></div>
+      <div class="aim"><h3>Aim 3</h3><p>Raise local issues that matter to youth and propose practical solutions.</p></div>
+      <div class="aim"><h3>Aim 4</h3><p>Organize service projects that make a visible difference in our community.</p></div>
+      <div class="aim"><h3>Aim 5</h3><p>Build leadership, public-speaking, and organizing skills in our members.</p></div>
+      <div class="aim"><h3>Aim 6</h3><p>Keep our work open and welcoming to youth of every background.</p></div>
+      <div class="aim"><h3>Aim 7</h3><p>Connect young people with local leaders, officials, and organizations.</p></div>
+      <div class="aim"><h3>Aim 8</h3><p>Help students learn how local government works and how to take part.</p></div>
+      <div class="aim"><h3>Aim 9</h3><p>Support the wellbeing and mental health of young people in our area.</p></div>
+      <div class="aim"><h3>Aim 10</h3><p>Work as a team, share responsibility, and follow through on our plans.</p></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="social">
+    <a href="#">Instagram</a>
+    <a href="#">TikTok</a>
+    <a href="#">Email</a>
+  </div>
+  <small>&copy; 2026 Silver Spring Youth Council</small>
+</footer>
 </body>
 </html>
